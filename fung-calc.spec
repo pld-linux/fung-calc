@@ -23,7 +23,7 @@ of use all in one package.
 
 %description -l pl
 Fung-Cals to ³atwy w u¿yciu kalkulator rysuj±cy wykresy, korzystaj±cy
-z QT. Rysuje kilka typów wykresów 2D i 3D. £±czy w sobie wykorzystanie
+z Qt. Rysuje kilka typów wykresów 2D i 3D. £±czy w sobie wykorzystanie
 zaawansowanych mo¿liwo¶ci matematycznych i ³atwo¶æ u¿ycia.
 
 %package devel
