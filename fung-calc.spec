@@ -5,14 +5,14 @@ Version:	1.3.2b
 Release:	2
 License:	GPL
 Group:		X11/Applications/Science
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/fung-calc/%{name}-%{version}.tar.gz
 # Source0-md5:	bae7a2d39fd6658d4aa181ddc73bd5d5
 Patch0:		%{name}-desktop.patch
 URL:		http://fung-calc.sourceforge.net/
 BuildRequires:	kdelibs-devel
+BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_htmldir	%{_datadir}/doc/kde/HTML
 %define		_noautoreqdep	libGL.so.1 libGLU.so.1
 
 %description
@@ -30,7 +30,7 @@ zaawansowanych mo¿liwo¶ci matematycznych i ³atwo¶æ u¿ycia.
 Summary:	Header files for fung-calc libraries
 Summary(pl):	Pliki nag³ówkowe bibliotek fung-calc
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	kdelibs-devel
 
 %description devel
@@ -44,7 +44,7 @@ Pliki nag³ówkowe bibliotek fung-calc.
 %patch0 -p1
 
 %build
-kde_htmldir="%{_htmldir}"; export kde_htmldir
+kde_htmldir="%{_kdedocdir}"; export kde_htmldir
 kde_appsdir="%{_desktopdir}"; export kde_appsdir
 
 %configure
@@ -75,11 +75,11 @@ rm -rf $RPM_BUILD_ROOT
 # needed here (incl. GPL COPYING)???
 %{_datadir}/%{name}/[ACRT]*
 %{_datadir}/%{name}/samplegraphs.fgc
+%dir %{_datadir}/%{name}/translations
+%lang(es) %{_datadir}/%{name}/translations/fung-calc.es.qm
 %{_desktopdir}/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/fung_calc.png
 %{_datadir}/mimelnk/application/*.desktop
-%dir %{_datadir}/%{name}/translations
-%lang(es) %{_datadir}/%{name}/translations/fung-calc.es.qm
 
 %files devel
 %defattr(644,root,root,755)
