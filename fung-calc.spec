@@ -2,16 +2,17 @@ Summary:	Fung-Calc is a graphing calculator
 Summary(pl):	Fung-calc to kalkulator rysuj±cy wykresy
 Name:		fung-calc
 Version:	1.3.2b
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Science
-Source0:	http://dl.sourceforge.net/fung-calc/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	bae7a2d39fd6658d4aa181ddc73bd5d5
+Patch0:		%{name}-desktop.patch
 URL:		http://fung-calc.sourceforge.net/
 BuildRequires:	kdelibs-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define         _htmldir        %{_datadir}/doc/kde/HTML
+%define		_htmldir	%{_datadir}/doc/kde/HTML
 %define		_noautoreqdep	libGL.so.1 libGLU.so.1
 
 %description
@@ -40,10 +41,11 @@ Pliki nag³ówkowe bibliotek fung-calc.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
-kde_appsdir="%{_applnkdir}"; export kde_appsdir
+kde_appsdir="%{_desktopdir}"; export kde_appsdir
 
 %configure
 %{__make}
@@ -53,6 +55,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+mv $RPM_BUILD_ROOT%{_desktopdir}/Applications/* $RPM_BUILD_ROOT%{_desktopdir}
 
 %find_lang %{name} --with-kde
 
@@ -71,7 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 # needed here (incl. GPL COPYING)???
 %{_datadir}/%{name}/[ACRT]*
 %{_datadir}/%{name}/samplegraphs.fgc
-%{_applnkdir}/Applications/%{name}.desktop
+%{_desktopdir}/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/fung_calc.png
 %{_datadir}/mimelnk/application/*.desktop
 %dir %{_datadir}/%{name}/translations
