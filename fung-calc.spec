@@ -8,9 +8,11 @@ Group:		X11/Applications/Science
 Source0:	http://dl.sourceforge.net/fung-calc/%{name}-%{version}.tar.gz
 # Source0-md5:	8178d3c53be1b927e6d94bb6426de941
 URL:		http://fung-calc.sourceforge.net/
-#BuildRequires:	-
-#Requires:	-
+BuildRequires:	kdelibs-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define         _htmldir        %{_datadir}/doc/kde/HTML
+%define		_noautoreqdep	libGL.so.1 libGLU.so.1
 
 %description
 Fung-Calc is a free, open source advanced, yet easy to use, graphing
@@ -19,13 +21,27 @@ graphs. It combines the use of advanced mathematical features and ease
 of use all in one package.
 
 %description -l pl
-Fung-Cals to ³atwy w u¼yciu kalkulator rysuj±cy wykresy korzystaj±cy z
-QT. Rysuje kilka typów wykresów 2D i 3D.
+Fung-Cals to ³atwy w u¿yciu kalkulator rysuj±cy wykresy, korzystaj±cy
+z QT. Rysuje kilka typów wykresów 2D i 3D. £±czy w sobie wykorzystanie
+zaawansowanych mo¿liwo¶ci matematycznych i ³atwo¶æ u¿ycia.
+
+%package devel
+Summary:	Header files for fung-calc libraries
+Summary(pl):	Pliki nag³ówkowe bibliotek fung-calc
+Group:		Development/Libraries
+Requires:	%{name} = %{version}
+Requires:	kdelibs-devel
+
+%description devel
+Header files for fung-calc libraries.
+
+%description devel -l pl
+Pliki nag³ówkowe bibliotek fung-calc.
+
 %prep
 %setup -q
 
 %build
-%define         _htmldir        %{_datadir}/doc/kde/HTML
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 
 %configure
@@ -36,15 +52,28 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
+%find_lang %{name} --with-kde
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
+
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc ChangeLog README
-%{_htmldir}/en/%{name}
 %attr(755,root,root) %{_bindir}/*
-%{_libdir}/libfungcalc*
-%{_datadir}/%{name}
+%attr(755,root,root) %{_libdir}/libfungcalc*.so.*.*.*
+%dir %{_datadir}/%{name}
+# needed here (incl. GPL COPYING)???
+%{_datadir}/%{name}/[ACRT]*
+%{_datadir}/%{name}/samplegraphs.fgc
+%dir %{_datadir}/%{name}/translations
+%lang(es) %{_datadir}/%{name}/translations/fung-calc.es.qm
 
-%{_includedir}/%{name}/*.h
+%files devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libfungcalc*.so
+%{_libdir}/libfungcalc*.la
+%{_includedir}/%{name}
