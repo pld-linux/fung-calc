@@ -1,0 +1,9 @@
+diff -urN aaa/fung-calc-1.3.2b/src/fung-calc.desktop fung-calc-1.3.2b/src/fung-calc.desktop
+--- aaa/fung-calc-1.3.2b/src/fung-calc.desktop	2003-07-04 01:22:01.000000000 +0200
++++ fung-calc-1.3.2b/src/fung-calc.desktop	2003-12-04 19:31:45.000000000 +0100
+@@ -9,4 +9,4 @@
+ Name=Fung-Calc
+ MimeType=application/x-fgc
+ X-KDE-NativeMimeType=application/x-fgc
+-Categories=Qt;KDE;Mathematics
++Categories=Qt;KDE;Education;Science;Math;
