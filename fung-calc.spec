@@ -1,12 +1,12 @@
 Summary:	Fung-Calc is a graphing calculator
 Summary(pl):	Fung-calc to kalkulator rysuj±cy wykresy
 Name:		fung-calc
-Version:	1.3.0
+Version:	1.3.2b
 Release:	1
 License:	GPL
 Group:		X11/Applications/Science
 Source0:	http://dl.sourceforge.net/fung-calc/%{name}-%{version}.tar.gz
-# Source0-md5:	8178d3c53be1b927e6d94bb6426de941
+# Source0-md5:	bae7a2d39fd6658d4aa181ddc73bd5d5
 URL:		http://fung-calc.sourceforge.net/
 BuildRequires:	kdelibs-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -43,6 +43,7 @@ Pliki nag³ówkowe bibliotek fung-calc.
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
+kde_appsdir="%{_applnkdir}"; export kde_appsdir
 
 %configure
 %{__make}
@@ -50,7 +51,8 @@ kde_htmldir="%{_htmldir}"; export kde_htmldir
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %find_lang %{name} --with-kde
 
@@ -69,6 +71,9 @@ rm -rf $RPM_BUILD_ROOT
 # needed here (incl. GPL COPYING)???
 %{_datadir}/%{name}/[ACRT]*
 %{_datadir}/%{name}/samplegraphs.fgc
+%{_applnkdir}/Applications/%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/fung_calc.png
+%{_datadir}/mimelnk/application/*.desktop
 %dir %{_datadir}/%{name}/translations
 %lang(es) %{_datadir}/%{name}/translations/fung-calc.es.qm
 
