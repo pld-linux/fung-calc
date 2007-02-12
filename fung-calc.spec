@@ -1,5 +1,5 @@
 Summary:	Fung-Calc is a graphing calculator
-Summary(pl):	Fung-calc to kalkulator rysuj眂y wykresy
+Summary(pl.UTF-8):   Fung-calc to kalkulator rysuj膮cy wykresy
 Name:		fung-calc
 Version:	1.3.2b
 Release:	2
@@ -21,14 +21,14 @@ calculator for Linux using Qt. It plots several types of 2D and 3D
 graphs. It combines the use of advanced mathematical features and ease
 of use all in one package.
 
-%description -l pl
-Fung-Cals to 砤twy w u縴ciu kalkulator rysuj眂y wykresy, korzystaj眂y
-z Qt. Rysuje kilka typ體 wykres體 2D i 3D. １czy w sobie wykorzystanie
-zaawansowanych mo縧iwo禼i matematycznych i 砤two舵 u縴cia.
+%description -l pl.UTF-8
+Fung-Cals to 艂atwy w u偶yciu kalkulator rysuj膮cy wykresy, korzystaj膮cy
+z Qt. Rysuje kilka typ贸w wykres贸w 2D i 3D. 艁膮czy w sobie wykorzystanie
+zaawansowanych mo偶liwo艣ci matematycznych i 艂atwo艣膰 u偶ycia.
 
 %package devel
 Summary:	Header files for fung-calc libraries
-Summary(pl):	Pliki nag丑wkowe bibliotek fung-calc
+Summary(pl.UTF-8):   Pliki nag艂贸wkowe bibliotek fung-calc
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	kdelibs-devel
@@ -36,8 +36,8 @@ Requires:	kdelibs-devel
 %description devel
 Header files for fung-calc libraries.
 
-%description devel -l pl
-Pliki nag丑wkowe bibliotek fung-calc.
+%description devel -l pl.UTF-8
+Pliki nag艂贸wkowe bibliotek fung-calc.
 
 %prep
 %setup -q
