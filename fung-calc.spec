@@ -1,5 +1,5 @@
 Summary:	Fung-Calc is a graphing calculator
-Summary(pl.UTF-8):   Fung-calc to kalkulator rysujący wykresy
+Summary(pl.UTF-8):	Fung-calc to kalkulator rysujący wykresy
 Name:		fung-calc
 Version:	1.3.2b
 Release:	2
@@ -28,7 +28,7 @@ zaawansowanych możliwości matematycznych i łatwość użycia.
 
 %package devel
 Summary:	Header files for fung-calc libraries
-Summary(pl.UTF-8):   Pliki nagłówkowe bibliotek fung-calc
+Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek fung-calc
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	kdelibs-devel
